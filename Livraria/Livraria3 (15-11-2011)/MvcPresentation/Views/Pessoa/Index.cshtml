@@ -1,0 +1,115 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    Livraria.Modelo.Context context = new Livraria.Modelo.Context();
+    var pessoasFisicas = context.Fisicas;
+    var pessoasJuridicas = context.Juridicas;
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Novo Cliente", "Create", "Pessoa")
+</p>
+
+<script type="text/javascript">
+    function SetPessoaJuridica() {
+        document.getElementById('cliente_pessoaJuridica').style.display = 'block';
+        document.getElementById('cliente_pessoaFisica').style.display = 'none';
+    }
+
+    function SetPessoaFisica() {
+        document.getElementById('cliente_pessoaFisica').style.display = 'block';
+        document.getElementById('cliente_pessoaJuridica').style.display = 'none';
+    }
+</script>
+
+<input type="radio" name="tipoCliente" checked="checked" value="pessoafisica" onfocus="javascript:SetPessoaFisica();" />
+<b>Pessoa Física</b>
+
+<input type="radio" name="tipoCliente" value="pessoajuridica" onfocus="javascript:SetPessoaJuridica();" />
+<b>Pessoa Jurídica</b>
+
+<br />
+<br />
+
+<div id="cliente_pessoaFisica" >
+<table>
+    <tr>
+        <th>
+            Nome
+        </th>
+        <th>
+            Data de nascimento
+        </th>
+        <th>
+            Email
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in pessoasFisicas) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataNascimento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditFisicas", new { id=item.ID }) |
+            @Html.ActionLink("Details", "DetailsFisica", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "DeleteFisica", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
+</div>
+
+<div id="cliente_pessoaJuridica" style="display: none;">
+<table>
+    <tr>
+        <th>
+            Nome
+        </th>
+        <th>
+            Razão Social
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            CNPJ
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in pessoasJuridicas) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomeFantasia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RazaoSocial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cnpj)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditJuridicas", new { id=item.ID }) |
+            @Html.ActionLink("Details", "DetailsJuridica", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "DeleteJuridica", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
+</div>

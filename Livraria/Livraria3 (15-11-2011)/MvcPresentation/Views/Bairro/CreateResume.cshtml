@@ -1,0 +1,18 @@
+﻿@model Livraria.Modelo.Bairro
+
+@using (Html.BeginForm()) 
+{
+    @Html.ValidationSummary(true)
+
+        <div class="editor-label">
+            Bairro @Html.EditorFor(model => model.Nome)
+            @Html.ValidationMessageFor(model => model.Nome)
+        </div>
+
+       <div class="editor-label">
+            Cidade @Html.DropDownList("CidadeId", String.Empty)
+            @Html.ValidationMessageFor(model => model.CidadeId)
+       </div>
+    
+       @Html.Partial("/Views/TipoLogradouro/CreateResume.cshtml")
+}

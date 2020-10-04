@@ -1,0 +1,20 @@
+﻿@model Livraria.Modelo.TipoLogradouro
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>TipoLogradouro</legend>
+
+    <div class="display-label">Descricao</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Descricao)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

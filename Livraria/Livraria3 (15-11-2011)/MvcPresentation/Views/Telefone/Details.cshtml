@@ -1,0 +1,31 @@
+﻿@model Livraria.Modelo.Telefone
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Telefone</legend>
+
+    <div class="display-label">Ddd</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Ddd)
+    </div>
+
+    <div class="display-label">Numero</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Numero)
+    </div>
+
+    <div class="display-label">Ramal</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Ramal)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,192 @@
+﻿@{
+    ViewBag.Title = "Pessoa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    
+    Livraria.Modelo.Context context = new Livraria.Modelo.Context();
+
+    List<SelectListItem> selectList_bairros = new List<SelectListItem>();
+    foreach (Livraria.Modelo.Bairro b in context.Bairros)
+    {
+        selectList_bairros.Add(
+            new SelectListItem()
+            {
+                Text = b.Nome,
+                Value = b.ID.ToString(),
+            });
+    }
+
+    List<SelectListItem> selectList_cidades = new List<SelectListItem>();
+    foreach (Livraria.Modelo.Cidade c in context.Cidades)
+    {
+        selectList_cidades.Add(
+            new SelectListItem()
+            {
+                Text = c.Nome,
+                Value = c.ID.ToString(),
+            });
+    }
+
+    List<SelectListItem> selectList_logradouros = new List<SelectListItem>();
+    foreach (Livraria.Modelo.TipoLogradouro l in context.Logradouro)
+    {
+        selectList_logradouros.Add(
+            new SelectListItem()
+            {
+                Text = l.Descricao,
+                Value = l.ID.ToString(),
+            });
+    }
+
+    List<SelectListItem> selectList_uf = new List<SelectListItem>();
+    foreach (Livraria.Modelo.UnidadeFederativa u in context.UFs)
+    {
+        selectList_uf.Add(
+            new SelectListItem()
+            {
+                Text = u.Nome,
+                Value = u.ID.ToString(),
+            });
+    }
+
+    List<Livraria.Modelo.Endereco> enderecos = new List<Livraria.Modelo.Endereco>();
+    foreach (var e in context.Enderecos)
+    {
+        enderecos.Add(new Livraria.Modelo.Endereco()
+        {
+            Bairro = e.Bairro,
+            BairroId = e.BairroId,
+            CEP = e.CEP,
+            Descricao = e.Descricao,
+            Fisicas = e.Fisicas,
+            ID = e.ID,
+            Juridica = e.Juridica,
+            TipoLogradouro = e.TipoLogradouro,
+            TipoLogradouroId = e.TipoLogradouroId,
+        });
+    }
+
+    Livraria.Modelo.Endereco endereco = //new Livraria.Modelo.Endereco();
+        (from e in enderecos
+        from f in e.Fisicas
+        where f.ID == ((Livraria.Modelo.Pessoa)(Model)).ID
+        select e).FirstOrDefault();
+
+
+    List<Livraria.Modelo.Telefone> telefones = new List<Livraria.Modelo.Telefone>();
+    foreach (var t in context.Telefones)
+    {
+        telefones.Add(new Livraria.Modelo.Telefone()
+        {
+            Ddd = t.Ddd,
+            Fisicas = t.Fisicas ?? new List<Livraria.Modelo.PessoaFisica>(),
+            ID = t.ID,
+            Juridica = t.Juridica,
+            Numero = t.Numero,
+            Ramal = t.Ramal,
+        });
+    }
+
+    Livraria.Modelo.Telefone telefone = //new Livraria.Modelo.Endereco();
+        (from t in telefones
+         from f in t.Fisicas
+         where f.ID == ((Livraria.Modelo.Pessoa)(Model)).ID
+         select t).FirstOrDefault();
+    
+    
+}
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <div id="cliente_pessoaFisica">
+        <fieldset>
+            <legend>Dados Gerais</legend>
+            <div class="editor-label">
+                Nome
+            </div>
+            <div class="editor-field">
+                @Html.TextBox("Nome")
+            </div>
+            <div class="editor-label">
+                CPF
+            </div>
+            <div class="editor-field">
+                @Html.TextBox("Cpf")
+            </div>
+            <div class="editor-label">
+                Data de Nascimento
+            </div>
+            <div class="editor-field">
+                @Html.TextBox("DataNascimento")
+            </div>
+            <div class="editor-label">
+                Email
+            </div>
+            <div class="editor-field">
+                @Html.TextBox("Email")
+            </div>
+            <div class="editor-label">
+                Observação
+            </div>
+            <div class="editor-field">
+                @Html.TextBox("Observacao")
+            </div>
+        </fieldset>
+    </div>
+      
+    <div id="cliente_endereco">
+    <fieldset>
+        <legend>Dados de Endereço</legend>
+        @*UF*@
+        <div class="editor-label">
+            Estado</div>
+        <div class="editor-field">@Html.DropDownList("endereco.Bairro.Cidade.UF.Nome", selectList_uf)</div>
+        @*Cidades*@
+        <div class="editor-label">
+            Cidade</div>
+        <div class="editor-field">@Html.DropDownList("cidade", selectList_cidades)</div>
+        @*Bairro*@
+        <div class="editor-label">
+            Bairro</div>
+        <div class="editor-field">@Html.DropDownList("bairro", selectList_bairros)</div>
+        @*Rua*@
+        <div class="editor-label">
+            Logradouro</div>
+        <div class="editor-field">@Html.TextBox("logradouro")</div>
+         @*CEP*@
+        <div class="editor-label">
+            CEP</div>
+        <div class="editor-field">@Html.TextBox("cep")</div>
+    </fieldset>
+    </div>
+    
+    <div id="cliente_telefone">
+    <fieldset>
+        <legend>Dados de Telefone</legend>
+        @* DDD *@
+        <div class="editor-label">
+            DDD</div>
+        <div class="editor-field">@Html.TextBox("ddd")</div>
+
+        @* Número *@
+        <div class="editor-label">
+            Número</div>
+        <div class="editor-field">@Html.TextBox("numero")</div>
+
+        @* Ramal *@
+        <div class="editor-label">
+            Ramal</div>
+        <div class="editor-field">@Html.TextBox("ramal")</div>
+       
+    </fieldset>
+    </div>    
+        
+    <input type="submit" value="CreatePessoaFisica" />
+    
+    
+    
+}

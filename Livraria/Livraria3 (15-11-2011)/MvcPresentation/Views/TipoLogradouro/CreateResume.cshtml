@@ -1,0 +1,10 @@
+﻿@model Livraria.Modelo.TipoLogradouro
+
+@using (Html.BeginForm()) 
+{
+    @Html.ValidationSummary(true)
+        <div class="editor-label">
+            Logradouro @Html.EditorFor(model => model.Descricao)
+            @Html.ValidationMessageFor(model => model.Descricao)
+        </div>
+}

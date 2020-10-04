@@ -1,0 +1,13 @@
+﻿@model Livraria.Modelo.Cidade
+
+@using (Html.BeginForm()) 
+{
+    @Html.ValidationSummary(true)
+
+    <div class="editor-label">
+       Estado @Html.DropDownList("UfId", String.Empty)
+       @Html.ValidationMessageFor(model => model.UfId)
+    </div>
+    
+    @Html.Partial("/Views/Bairro/CreateResume.cshtml", new Livraria.Modelo.Context().Bairros.ToList());
+}

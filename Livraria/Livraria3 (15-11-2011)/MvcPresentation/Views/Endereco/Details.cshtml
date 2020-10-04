@@ -1,0 +1,35 @@
+﻿@model Livraria.Modelo.Endereco
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Endereco</legend>
+
+    <div class="display-label">Descricao</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Descricao)
+    </div>
+
+    <div class="display-label">Bairro</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Bairro.Nome)
+    </div>
+
+    <div class="display-label">CEP</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CEP)
+    </div>
+
+    <div class="display-label">TipoLogradouro</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TipoLogradouro.Descricao)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{977A9372-ABEB-402F-BA02-BEC08919F39A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Livraria.GUI</RootNamespace>
+    <AssemblyName>Livraria.GUI</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Livraria.GUI, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <ExecutableExtension>.exe</ExecutableExtension>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controller.cs" />
+    <Compile Include="Controls\AdicionarRemoverControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\AdicionarRemoverControl.Designer.cs">
+      <DependentUpon>AdicionarRemoverControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLivraria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLivraria.Designer.cs">
+      <DependentUpon>FormLivraria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormInserir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInserir.Designer.cs">
+      <DependentUpon>FormInserir.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPrincipal.Designer.cs">
+      <DependentUpon>FormPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\ucBairro.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewModel\ucBairro.Designer.cs">
+      <DependentUpon>ucBairro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ucCidade.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewModel\ucCidade.Designer.cs">
+      <DependentUpon>ucCidade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ucEndereco.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewModel\ucEndereco.Designer.cs">
+      <DependentUpon>ucEndereco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ucItemDeVenda.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewModel\ucItemDeVenda.Designer.cs">
+      <DependentUpon>ucItemDeVenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ucPessoaFisica.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewModel\ucPessoaFisica.Designer.cs">
+      <DependentUpon>ucPessoaFisica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ucPessoaJuridica.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewModel\ucPessoaJuridica.Designer.cs">
+      <DependentUpon>ucPessoaJuridica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ucProduto.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewModel\ucProduto.Designer.cs">
+      <DependentUpon>ucProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ucTelefone.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewModel\ucTelefone.Designer.cs">
+      <DependentUpon>ucTelefone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ucUnidadeFederativa.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewModel\ucUnidadeFederativa.Designer.cs">
+      <DependentUpon>ucUnidadeFederativa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ucUserControlBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewModel\ucUserControlBase.Designer.cs">
+      <DependentUpon>ucUserControlBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ucVenda.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewModel\ucVenda.Designer.cs">
+      <DependentUpon>ucVenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\Variation.cs" />
+    <EmbeddedResource Include="Controls\AdicionarRemoverControl.resx">
+      <DependentUpon>AdicionarRemoverControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLivraria.resx">
+      <DependentUpon>FormLivraria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormInserir.resx">
+      <DependentUpon>FormInserir.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPrincipal.resx">
+      <DependentUpon>FormPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="ViewModel\ucBairro.resx">
+      <DependentUpon>ucBairro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewModel\ucCidade.resx">
+      <DependentUpon>ucCidade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewModel\ucEndereco.resx">
+      <DependentUpon>ucEndereco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewModel\ucItemDeVenda.resx">
+      <DependentUpon>ucItemDeVenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewModel\ucPessoaFisica.resx">
+      <DependentUpon>ucPessoaFisica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewModel\ucPessoaJuridica.resx">
+      <DependentUpon>ucPessoaJuridica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewModel\ucProduto.resx">
+      <DependentUpon>ucProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewModel\ucTelefone.resx">
+      <DependentUpon>ucTelefone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewModel\ucUnidadeFederativa.resx">
+      <DependentUpon>ucUnidadeFederativa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewModel\ucUserControlBase.resx">
+      <DependentUpon>ucUserControlBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewModel\ucVenda.resx">
+      <DependentUpon>ucVenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Dominio\Dominio.csproj">
+      <Project>{C8F37FDF-5308-407E-9F2A-C53BB531B7AA}</Project>
+      <Name>Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modelo\Modelo.csproj">
+      <Project>{5C62D8D2-3C87-43BD-8067-847E3D44A010}</Project>
+      <Name>Modelo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilitario\Utilitario.csproj">
+      <Project>{2CDA2104-2162-42C7-88B3-29AB2EB6F015}</Project>
+      <Name>Utilitario</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

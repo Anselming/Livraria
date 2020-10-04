@@ -1,0 +1,214 @@
+﻿@{
+    ViewBag.Title = "Pessoa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    
+    Livraria.Modelo.Context context = new Livraria.Modelo.Context();
+
+    List<SelectListItem> selectList_bairros = new List<SelectListItem>();
+    foreach (Livraria.Modelo.Bairro b in context.Bairros)
+    {
+        selectList_bairros.Add(
+            new SelectListItem()
+            {
+                Text = b.Nome,
+                Value = b.ID.ToString(),
+            });
+    }
+
+    List<SelectListItem> selectList_cidades = new List<SelectListItem>();
+    foreach (Livraria.Modelo.Cidade c in context.Cidades)
+    {
+        selectList_cidades.Add(
+            new SelectListItem()
+            {
+                Text = c.Nome,
+                Value = c.ID.ToString(),
+            });
+    }
+
+    List<SelectListItem> selectList_logradouros = new List<SelectListItem>();
+    foreach (Livraria.Modelo.TipoLogradouro l in context.Logradouro)
+    {
+        selectList_logradouros.Add(
+            new SelectListItem()
+            {
+                Text = l.Descricao,
+                Value = l.ID.ToString(),
+            });
+    }
+
+    List<SelectListItem> selectList_uf = new List<SelectListItem>();
+    foreach (Livraria.Modelo.UnidadeFederativa u in context.UFs)
+    {
+        selectList_uf.Add(
+            new SelectListItem()
+            {
+                Text = u.Nome,
+                Value = u.ID.ToString(),
+            });
+    }
+
+}
+<script type="text/javascript">
+    function SetPessoaJuridica() {
+        document.getElementById('cliente_pessoaJuridica').style.display = 'block';
+        document.getElementById('cliente_pessoaFisica').style.display = 'none';
+    }
+
+    function SetPessoaFisica() {
+        document.getElementById('cliente_pessoaFisica').style.display = 'block';
+        document.getElementById('cliente_pessoaJuridica').style.display = 'none';
+    }
+</script>
+@using (Html.BeginForm())
+{
+    
+<input type="radio" name="tipoCliente" checked="checked" value="pessoafisica" onfocus="javascript:SetPessoaFisica();" />
+<b>Pessoa Física</b>
+    
+<input type="radio" name="tipoCliente" value="pessoajuridica" onfocus="javascript:SetPessoaJuridica();" />
+<b>Pessoa Jurídica</b>
+
+<br />    
+
+    @Html.ValidationSummary(true)
+
+    <div id="cliente_pessoaFisica">
+        <fieldset>
+            <legend>Dados Gerais</legend>
+            <div class="editor-label">
+                Nome
+            </div>
+            <div class="editor-field">
+                @Html.TextBox("Nome")
+            </div>
+            <div class="editor-label">
+                CPF
+            </div>
+            <div class="editor-field">
+                @Html.TextBox("CPF")
+            </div>
+            <div class="editor-label">
+                Data de Nascimento
+            </div>
+            <div class="editor-field">
+                @Html.TextBox("DataDeNascimento")
+            </div>
+            <div class="editor-label">
+                Email
+            </div>
+            <div class="editor-field">
+                @Html.TextBox("Email1")
+            </div>
+            <div class="editor-label">
+                Observação
+            </div>
+            <div class="editor-field">
+                @Html.TextBox("Observação1")
+            </div>
+        </fieldset>
+    </div>
+    
+    <div id="cliente_pessoaJuridica" style="display: none;">
+        <fieldset>
+            <legend>Dados Gerais</legend>
+            <div class="editor-label">
+                Nome Fantasia
+            </div>
+            <div class="editor-field">
+                @Html.TextBox("NomeFantasia")
+            </div>
+            <div class="editor-label">
+                CNPJ
+            </div>
+            <div class="editor-field">
+                @Html.TextBox("CNPJ")
+            </div>
+            <div class="editor-label">
+                Razão Social
+            </div>
+            <div class="editor-field">
+                @Html.TextBox("RazaoSocial")
+            </div>
+            <div class="editor-label">
+                Inscrição Estadual
+            </div>
+            <div class="editor-field">
+                @Html.TextBox("IE")
+            </div>
+            <div class="editor-label">
+                Inscrição Municipal
+            </div>
+            <div class="editor-field">
+                @Html.TextBox("IM")
+            </div>
+            <div class="editor-label">
+                Email
+            </div>
+            <div class="editor-field">
+                @Html.TextBox("Email2")
+            </div>
+            <div class="editor-label">
+                Observação
+            </div>
+            <div class="editor-field">
+                @Html.TextBox("Observação2")
+            </div>
+        </fieldset>
+    </div>
+    
+    <div id="cliente_endereco">
+    <fieldset>
+        <legend>Dados de Endereço</legend>
+        @*UF*@
+        <div class="editor-label">
+            Estado</div>
+        <div class="editor-field">@Html.DropDownList("unidadefederativa", selectList_uf)</div>
+        @*Cidades*@
+        <div class="editor-label">
+            Cidade</div>
+        <div class="editor-field">@Html.DropDownList("cidade", selectList_cidades)</div>
+        @*Bairro*@
+        <div class="editor-label">
+            Bairro</div>
+        <div class="editor-field">@Html.DropDownList("bairro", selectList_bairros)</div>
+        @*Rua*@
+        <div class="editor-label">
+            Logradouro</div>
+        <div class="editor-field">@Html.TextBox("logradouro")</div>
+         @*CEP*@
+        <div class="editor-label">
+            CEP</div>
+        <div class="editor-field">@Html.TextBox("cep")</div>
+    </fieldset>
+    </div>
+    
+    <div id="cliente_telefone">
+    <fieldset>
+        <legend>Dados de Telefone</legend>
+        @* DDD *@
+        <div class="editor-label">
+            DDD</div>
+        <div class="editor-field">@Html.TextBox("ddd")</div>
+
+        @* Número *@
+        <div class="editor-label">
+            Número</div>
+        <div class="editor-field">@Html.TextBox("numero")</div>
+
+        @* Ramal *@
+        <div class="editor-label">
+            Ramal</div>
+        <div class="editor-field">@Html.TextBox("ramal")</div>
+       
+    </fieldset>
+    </div>    
+        
+    <input type="submit" value="CreatePessoaFisica" />
+    
+    
+    
+}

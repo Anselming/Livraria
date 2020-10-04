@@ -1,0 +1,40 @@
+﻿@model Livraria.Modelo.PessoaFisica
+
+@{
+    ViewBag.Title = "DetailsFisica";
+}
+
+<h2>DetailsFisica</h2>
+
+<fieldset>
+    <legend>PessoaFisica</legend>
+
+    <div class="display-label">Nome</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Nome)
+    </div>
+
+    <div class="display-label">Cpf</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Cpf)
+    </div>
+
+    <div class="display-label">DataNascimento</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DataNascimento)
+    </div>
+
+    <div class="display-label">Email</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
+
+    <div class="display-label">Observacao</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Observacao)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
